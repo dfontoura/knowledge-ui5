@@ -1,0 +1,141 @@
+  
+<mvc:View 
+    controllerName="com.vaees.knowledge-ui5.components.list.list"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:f="sap.f"
+    xmlns:layout="sap.ui.layout"
+    height="100%">
+
+    <f:DynamicPage>
+		<f:title>
+            <f:DynamicPageTitle>
+                <f:heading>
+                    <Title text="{i18n>headerTitle}"/>
+                </f:heading>
+            </f:DynamicPageTitle>
+        </f:title>
+        <f:content>
+            <IconTabBar id="IconTabBar" stretchContentHeight="true" backgroundDesign="Transparent" 
+                applyContentPadding="false" expanded="{device>/isNoPhone}" class="sapUiResponsiveContentPadding">
+                <items>
+
+                    <IconTabFilter text="{i18n>Products}" key="products">         
+                        <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                            <Table  id="products-table" sticky="HeaderToolbar,ColumnHeaders" width="auto" 
+                                items="{path: 'productsList>/'}" fixedLayout="false">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="{i18n>Products}" level="H2" class="sapUiSmallMarginEnd"/>
+                                        <Button id="buttonAddProduct" text="{i18n>AddButtonText}" press="handlePressAddProduct"
+                                                type="Transparent" class="sapUiSmallMarginEnd"/>                
+                                    </Toolbar>                    
+                                </headerToolbar>
+                                <columns>
+                                    <Column visible="false">
+                                        <Text text="id" />
+                                    </Column>
+                                    <Column width="12em" minScreenWidth="Tablet">
+                                        <Text text="{i18n>DescriptionField}" />
+                                    </Column>
+                                    <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                        <Text text="{i18n>Supplier}" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{productsList>id}" />
+                                            <Text text="{productsList>description}" />
+                                            <Text text="{productsList>name} ({productsList>country})" />
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </IconTabFilter>
+
+                    <IconTabFilter text="{i18n>Suppliers}" key="suppliers">
+                        <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                            <Table  id="suppliers-table" sticky="HeaderToolbar,ColumnHeaders" width="auto" 
+                                items="{path: 'suppliersList>/'}" fixedLayout="false">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="{i18n>Suppliers}" level="H2" class="sapUiSmallMarginEnd"/>
+                                        <Button id="buttonAddSupplier" text="{i18n>AddButtonText}" press="handlePressAddSupplier"
+                                                type="Transparent" class="sapUiSmallMarginEnd"/>                
+                                    </Toolbar>                    
+                                </headerToolbar>
+                                <columns>
+                                    <Column visible="false">
+                                        <Text text="id" />
+                                    </Column>
+                                    <Column minScreenWidth="Tablet">
+                                        <Text text="{i18n>NameField}" />
+                                    </Column>
+                                    <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                        <Text text="{i18n>CountryField}" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{suppliersList>id}" />
+                                            <Text text="{suppliersList>name}" />
+                                            <Text text="{suppliersList>country}" />
+                                    </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                   
+                    </IconTabFilter>
+                    <IconTabFilter text="{i18n>PurchaseOrders}" key="purchaseOrders">
+                        <ScrollContainer height="100%" width="100%" horizontal="false" vertical="true">
+                            <Table  id="purchase-orders-table" sticky="HeaderToolbar,ColumnHeaders" mode="SingleSelectLeft" width="auto" 
+                                items="{path: 'purchaseOrdersList>/'}" fixedLayout="false">
+                                <headerToolbar>
+                                    <Toolbar>
+                                        <Title text="{i18n>PurchaseOrders}" level="H2" class="sapUiSmallMarginEnd"/>
+                                        <Button id="buttonAddOrder" text="{i18n>AddButtonText}" press="handlePressAddPurchaseOrder"
+                                                type="Transparent" class="sapUiSmallMarginEnd"/>
+                                        <Button id="buttonDeleteOrder" text="{i18n>DeleteButtonText}" press="handlePressDeleteOrder"
+                                                type="Transparent"/>                   
+                                    </Toolbar>                    
+                                </headerToolbar>
+                                <columns>
+                                    <Column visible="false">
+                                        <Text text="id" />
+                                    </Column>
+                                    <Column width="12em" minScreenWidth="Tablet">
+                                        <Text text="{i18n>ProductNameField}" />
+                                    </Column>
+                                    <Column minScreenWidth="Tablet" demandPopin="true" hAlign="End">
+                                        <Text text="{i18n>PriceField}"/>
+                                    </Column>
+                                    <Column minScreenWidth="Tablet" demandPopin="true" hAlign="Center">
+                                        <Text text="{i18n>SupplierField}" />
+                                    </Column>
+                                </columns>
+                                <items>
+                                    <ColumnListItem>
+                                        <cells>
+                                            <Text text="{purchaseOrdersList>id}" />
+                                            <Text text="{purchaseOrdersList>description}" />
+                                            <ObjectNumber number="{ parts:[{path:'purchaseOrdersList>price'},{path:'currency>/currency'}],
+                                                    type: 'sap.ui.model.type.Currency', formatOptions: {showMeasure: false}}"
+                                                    unit="{CurrencyCode}" />
+                                            <Text text="{purchaseOrdersList>name} ({purchaseOrdersList>country})" />
+                                    </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </ScrollContainer>
+                    </IconTabFilter>
+
+                </items>
+            </IconTabBar>
+        </f:content>
+    </f:DynamicPage>
+</mvc:View>

@@ -1,0 +1,37 @@
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+	
+	<Dialog
+		id="addProductDialog"
+		title="{i18n>addProductTitle}">
+
+		<f:SimpleForm id="SimpleFormAddProduct" editable="true" >
+			<f:content>
+				<Label text="{i18n>DescriptionField}" />
+				<Input id="description" value="{ProductDescription}" />
+				<Label text="{i18n>SupplierField}" />
+				<Select id="supplierSelect" 
+						forceSelection="true" 
+						items="{
+							path: 'suppliersList>/',
+							sorter: { path: 'name' }
+						}">
+					<core:Item key="{suppliersList>id}" text="{suppliersList>name}" />				
+				</Select>
+			</f:content>
+		</f:SimpleForm>
+		<beginButton>
+			<Button
+				text="{i18n>SaveButtonText}"
+				press=".addProduct_HandlePressSave"
+				type="Emphasized"/>
+		</beginButton>
+		<endButton>
+			<Button
+				text="{i18n>CancelButtonText}"
+				press=".addProduct_HandlePressCancel"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>

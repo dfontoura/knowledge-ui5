@@ -1,0 +1,7 @@
+<mvc:View
+	controllerName="com.vaees.knowledge-ui5.components.app.app"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:mvc="sap.ui.core.mvc">
+	<App class="myAppDemoWT" id="app"/>
+</mvc:View>

@@ -1,0 +1,39 @@
+  
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+
+   <Dialog
+      id="addPurchaseOrderDialog"
+      title="{i18n>addPurchaseOrderTitle}">
+
+
+		<f:SimpleForm id="SimpleFormAddPurchaseOrder" editable="true" >
+			<f:content>
+				<Label text="{i18n>ProductField}" />
+				<Select id="productSelect" 
+						forceSelection="true" 
+						items="{
+							path: 'productsList>/',
+							sorter: { path: 'description' }
+						}">
+					<core:Item key="{productsList>id}" text="{productsList>description}" />				
+				</Select>
+				<Label text="{i18n>PriceField}" />
+				<Input id="price" value="{ProductPrice}" />
+			</f:content>
+		</f:SimpleForm>
+		<beginButton>
+			<Button
+				text="{i18n>SaveButtonText}"
+				press=".addPurchaseOrder_HandlePressSave"
+				type="Emphasized"/>
+		</beginButton>
+		<endButton>
+			<Button
+				text="{i18n>CancelButtonText}"
+				press=".addPurchaseOrder_HandlePressCancel"/>
+		</endButton>
+  	</Dialog>
+</core:FragmentDefinition>

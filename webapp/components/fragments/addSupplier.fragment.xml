@@ -1,0 +1,32 @@
+  
+<core:FragmentDefinition
+	xmlns="sap.m"
+	xmlns:f="sap.ui.layout.form"
+	xmlns:core="sap.ui.core">
+
+   <Dialog
+      id="addSupplierDialog"
+      title="{i18n>addSupplierTitle}">
+
+
+		<f:SimpleForm id="SimpleFormAddSupplier" editable="true" >
+			<f:content>
+				<Label text="{i18n>NameField}" />
+				<Input id="name" value="{SupplierName}" />
+				<Label text="{i18n>CountryField}" />
+				<Input id="country" value="{SupplierCountry}" />
+			</f:content>
+		</f:SimpleForm>
+		<beginButton>
+			<Button
+				text="{i18n>SaveButtonText}"
+				press=".addSupplier_HandlePressSave"
+				type="Emphasized"/>
+		</beginButton>
+		<endButton>
+			<Button
+				text="{i18n>CancelButtonText}"
+				press=".addSupplier_HandlePressCancel"/>
+		</endButton>
+  	</Dialog>
+</core:FragmentDefinition>
